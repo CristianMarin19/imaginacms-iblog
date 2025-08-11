@@ -221,7 +221,7 @@ class Post extends CrudModel implements TaggableInterface
       $baseUrls = array_merge($baseUrls, $categoryModel->getAllLocalizedUrls());
     }
 
-    if (!$this->wasRecentlyCreated && $this->status == 2) {
+    if (!$this->wasRecentlyCreated && $this->status == 2 && empty($this->isBeingDeleted ?? false)) {
       $baseUrls = array_merge($baseUrls, $this->getAllLocalizedUrls());
     }
 

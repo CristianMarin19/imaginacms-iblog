@@ -210,7 +210,7 @@ class Category extends CrudModel
   {
     $baseUrls = [config("app.url")];
 
-    if (!$this->wasRecentlyCreated && $this->status == 1) {
+    if (!$this->wasRecentlyCreated && $this->status == 1 && empty($this->isBeingDeleted ?? false)) {
       $baseUrls = array_merge($baseUrls, $this->getAllLocalizedUrls());
     }
     $urls = ['urls' => $baseUrls];
